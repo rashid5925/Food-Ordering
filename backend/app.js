@@ -43,6 +43,20 @@ app.use('/api', indexRouter);
 app.use('/api/auth', authRouter);
 app.use('/api/admin', adminRouter);
 
+const _dirname = path.dirname("")
+const buildPath = path.join(_dirname  , "../frontend/dist");
+app.use(express.static(buildPath))
+app.get("/", function(req, res){
+    res.sendFile(
+        path.join(__dirname, "../frontend/dist/index.html"),
+        function (err) {
+          if (err) {
+            res.status(500).send(err);
+          }
+        }
+      );
+})
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
