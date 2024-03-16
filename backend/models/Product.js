@@ -9,10 +9,6 @@ const productSchema = new mongoose.Schema({
         type: Number,
         required: true
     },
-    amount: {
-        type: Number,
-        required: true
-    },
     decription: {
         type: String,
         required: true
@@ -22,22 +18,28 @@ const productSchema = new mongoose.Schema({
     },
     image: {
         type: String,
+        required: true
     },
-    images: {
-        type: [{
-            type: String
-        }]   
+    image_id: {
+        type: String,
+        required: true
     },
     rating: {
-        user: {
-            type: mongoose.Types.ObjectId,
-            ref: 'User',
-            required: true
-        },
-        value: {
-            type: Number,
-            required: true
-        }
+        type: [{
+            user: {
+                type: mongoose.Types.ObjectId,
+                ref: 'User',
+                required: true
+            },
+            value: {
+                type: Number,
+                required: true
+            }
+        }]
+    },
+    featured: {
+        type: Boolean,
+        default: false
     }
 });
 

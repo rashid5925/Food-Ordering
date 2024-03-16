@@ -36,6 +36,10 @@ const userSchema = new mongoose.Schema({
             }
         }]
     },
+    payment: {
+        type: Boolean,
+        default: false
+    }
 });
 
 userSchema.plugin(passportLocalMongoose);
@@ -44,7 +48,8 @@ userSchema.methods.generateAccessToken = function () {
     return jwt.sign(
         {
             _id: this._id,
-            username: this.username
+            username: this.username,
+            admin: this.admin
         },
         process.env.ACCESS_TOKEN_SECRET,
         {

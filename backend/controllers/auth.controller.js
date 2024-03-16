@@ -3,7 +3,9 @@ const User = require("../models/User");
 
 const register = (req, res, next) => {
 	const { username, name, password } = req.body;
-	const admin = req.body.admin ? req.body.admin : false;
+	const phone = req.body.phone ? req.body.phone : '';
+	const admin = false;
+	const payment = false;
 	if (username === "" || name === "" || password === "") {
 		res.statusCode = 401;
 		res.setHeader("Content-Type", "application/json");
@@ -16,7 +18,9 @@ const register = (req, res, next) => {
 			new User({
 				username: username,
 				name: name,
-				admin: admin
+				admin: admin,
+				phone: phone,
+				payment: payment,
 			}),
 			password,
 			(err, user) => {
