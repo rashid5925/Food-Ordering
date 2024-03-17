@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-    baseURL: 'http://foodordering.eu-north-1.elasticbeanstalk.com/api',
+    baseURL: 'http://13.49.225.14/api',
 
 });
 
